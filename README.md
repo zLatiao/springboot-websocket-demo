@@ -1,29 +1,16 @@
-# Getting Started
+```mermaid
+graph TD
+    A[客户端] -->|1. 建立WebSocket连接| B(服务端端点)
+    B -->|2. 连接确认| A
+    A -->|3. 订阅广播队列| C[/topic/greetings/]
+    C -->|4. 订阅成功| A
+    A -->|5. 发送用户消息| D{服务端路由器}
+    D -->|6. 路由到Controller| E[[GreetingController]]
+    E -->|7. 处理业务逻辑| F[消息代理]
+    F -->|8. 广播消息| C
+    C -->|9. 推送消息| A
+```
 
-### Reference Documentation
+TODO
 
-For further reference, please consider the following sections:
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.5.3/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.5.3/maven-plugin/build-image.html)
-* [Spring Web](https://docs.spring.io/spring-boot/3.5.3/reference/web/servlet.html)
-* [WebSocket](https://docs.spring.io/spring-boot/3.5.3/reference/messaging/websockets.html)
-
-### Guides
-
-The following guides illustrate how to use some features concretely:
-
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Using WebSocket to build an interactive web application](https://spring.io/guides/gs/messaging-stomp-websocket/)
-
-### Maven Parent overrides
-
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the
-parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
-
+1. 通过所有的拦截器，搞个日志，让用户更好理解执行顺序

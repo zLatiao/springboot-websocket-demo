@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello WebSocket</title>
+    <!-- 引入 Bootstrap 样式 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 自定义样式 -->
+    <link href="/main.css" rel="stylesheet">
+    <!-- 引入依赖库 -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="/app.js"></script> <!-- 客户端逻辑 -->
+</head>
+<body>
+<noscript>
+    <h2 style="color: #ff0000">您的浏览器不支持 JavaScript！WebSocket 依赖 JavaScript 功能。请启用 JavaScript 并刷新页面！</h2>
+</noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <!-- 连接控制区 -->
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket 连接：</label>
+                    <button id="connect" class="btn btn-default" type="submit">连接</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">断开连接</button>
+                </div>
+            </form>
+        </div>
+        <!-- 消息发送区 -->
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="name">请输入名称：</label>
+                    <input type="text" id="name" class="form-control" placeholder="在此输入名称...">
+                </div>
+                <button id="send" class="btn btn-default" type="submit">发送</button>
+            </form>
+        </div>
+    </div>
+    <!-- 消息展示区 -->
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr><th>问候语</th></tr>
+                </thead>
+                <tbody id="greetings"></tbody> <!-- 动态填充消息 -->
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
